@@ -1,5 +1,6 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+  <HeaderComponent v-bind:TextHeader="text_header"/>
   <h5>Selamat datang: {{ name }}</h5>
   <input type="text" v-model="name"><br>
   <button v-on:click="ubahNama">Ubah Nama</button>
@@ -22,14 +23,19 @@
 </template>
 
 <script>
+import HeaderComponent from './components/HeaderComponent.vue'
 
 export default {
   name: 'App',
+  components: {
+    HeaderComponent
+  },
   data() {
     return {
       search: '',
       name: '',
-      products: []
+      products: [],
+      text_header: "Selamat Datang Gaiss 💚"
     }
   },
   methods: {
