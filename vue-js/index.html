@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belajar VUE JS</title>
+</head>
+<body>
+    <div id="app">
+        {{ pesan }}
+    </div>
+
+    <div id="app-2">
+        <span v-bind:title="pesan2">
+            Arahkan mouse Anda kesini dan tunggu dalam beberapa detik 
+            untuk melihat judul pesan yang dinamis
+        </span>
+    </div>
+
+    <div id="app-3">
+        <span v-if="terlihat">
+            <strong>Jika data bernilai true maka terlihat</strong>
+        </span>
+        <span v-else>
+            Jika data bernilai false maka terlihat
+        </span>
+    </div>
+
+    <div id="app-4">
+        <ol>
+            <li v-for="todo in todos">
+                {{ todo.teks }}
+            </li>
+        </ol>
+    </div>
+
+    <strong>Reverse String</strong>
+    <div id="app-5">
+        <p>{{ pesan }}</p>
+        <button v-on:click="reverseString()">Reverse</button>
+    </div>
+
+    <div id="app-6">
+        <p>{{ pesan }}</p>
+        <input type="text" v-model="pesan">
+    </div>
+
+
+    <strong>Mix Reverse</strong>
+    <div id="app-7">
+        <p>{{ pesan }}</p>
+        <input type="text" v-model="pesan">
+        <button v-on:click="bolakBalik()">Bolak - Balik</button>
+    </div>
+
+    <!-- versi development, berisi peringatan yang sangat membantu -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!-- versi production, ukuran lebih optimal dan kecepatan yang telah ditingkatkan -->
+    <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                pesan: 'Hello, Worlds 😄',
+            }
+        })
+
+        var app2 = new Vue({
+            el: '#app-2',
+            data: {
+                pesan2: 'Anda memuat halaman ini pada jam ' + new Date().toLocaleString()
+            }
+        })
+
+        var app3 = new Vue({
+            el: '#app-3',
+            data: {
+                terlihat: true
+            }
+        })
+
+        var app4 = new Vue({
+            el: '#app-4',
+            data: {
+                todos: [
+                    { teks: 'Halo' },
+                    { teks: 'Halo' },
+                    { teks: 'Halo' },
+                    { teks: 'Halo' },
+                ]
+            }
+        })
+
+        var app5 = new Vue({
+            el: '#app-5',
+            data: {
+                pesan: 'Zakiyudin Kamil Fikri'
+            },
+            methods: {
+                reverseString: function () {
+                    this.pesan = this.pesan.split('').reverse().join('')
+                }
+            }
+        })
+
+        var app6 = new Vue({
+            el: '#app-6',
+            data: {
+                pesan: 'Zakiyudin KF'
+            }
+        })
+
+        var app7 = new Vue({
+            el: '#app-7',
+            data: {
+                pesan: 'Blabla'
+            },
+            methods: {
+                bolakBalik: function() {
+                    this.pesan = this.pesan.split('').reverse().join('')
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>
